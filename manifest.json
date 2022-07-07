@@ -2,18 +2,17 @@
   "name": "Identicons Only",
   "version": "0.1",
   "description": "Replace GitHub profile pictures with that user's identicon",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "content_scripts": [{
-      "matches": ["<all_urls>"],
+      "matches": ["*://*.github.com/*"],
       "all_frames": true,
       "js":      ["assets/js/contentScript.js"]
   }],
-  "permissions": [
+  "host_permissions": [
     "https://api.github.com/user/*"
   ],
   "background": {
-    "scripts": ["assets/js/background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
   "icons": {
     "16": "assets/images/icon16.png",
